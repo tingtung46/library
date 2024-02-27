@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --navbar-color: rgb(253, 230, 138);
+    --header-color: rgb(69, 26, 3);
+    --hero-color: rgb(245, 158, 11);
+    --card-color: rgb(217, 119, 6);
+    --font-color: rgb(253, 230, 138);
+    --dialog-color: rgb(180, 83, 9);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    padding: 0;
+    margin: 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+img {
+    height: 35px;
+    width: 35px;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: .5rem 1.5rem;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, .6);
+    background-color: var(--navbar-color);
+    color: var(--header-color);
+}
+
+.nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.nav-icon > img {
+    cursor: pointer;
+}
