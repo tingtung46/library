@@ -16,6 +16,7 @@ body {
     font-size: 16px;
     padding: 0;
     margin: 0;
+    background-color: var(--hero-color);
 }
 
 .container {
@@ -51,4 +52,32 @@ img {
 
 .nav-icon > img {
     cursor: pointer;
+}
+
+.hero {
+    padding: 1.5rem;
+    display: grid;
+    overflow: auto;
+    grid-template-columns: repeat(auto-fill, 200px);
+    grid-template-rows: repeat(auto-fill, 1fr);
+    gap: 1rem;
+    justify-content: center;
+}
+
+.adding-book {
+    padding: 5rem .5rem;
+    border-radius: 10px;
+    width: clamp(200px, 50%, 18rem);
+    background-color: var(--card-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    color: var(--font-color);
+}
+
+.adding-book > img {
+    width: 65px;
+    height: 65px;
+    display: inline-block;
 }
