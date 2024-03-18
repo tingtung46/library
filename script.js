@@ -17,7 +17,7 @@ closeBtn.addEventListener('click', () => {
     dialog.close();
 });
 
-appendBook.addEventListener('submit', addBookToLibrary);
+appendBook.addEventListener('click', addBookToLibrary);
 
 const titleInput = document.querySelector('#book-title');
 const authorInput = document.querySelector('#book-author');
@@ -43,11 +43,13 @@ function addBookToLibrary(e) {
 
     library.push(newBook);
 
+    appendNewBook(newBook);
+
     e.preventDefault();
     dialog.close();
 };
 
-function appendNewBook() {
+function appendNewBook(newBook) {
     const book = document.createElement('div');
     
     bookContainer.appendChild(book);
@@ -58,12 +60,13 @@ function appendNewBook() {
     const author = document.createElement('p');
     const pageNumber = document.createElement('p');
     const read = document.createElement('label');
-    const checkbox = document.createElement('checkbox');
+    const checkbox = document.createElement('input');
     const slider = document.createElement('span');
     const remove = document.createElement('button');
 
     read.append(checkbox, slider);
     read.setAttribute('id', 'read');
+    checkbox.setAttribute('type', 'checkbox')
     remove.setAttribute('id', 'remove');
 
     book.appendChild(title);
@@ -71,4 +74,22 @@ function appendNewBook() {
     book.appendChild(pageNumber);
     book.appendChild(read);
     book.appendChild(remove);
+
+    title.textContent = newBook.title;
+    author.textContent = newBook.author;
+    pageNumber.textContent = `${newBook.numberOfPages} pages`;
+    newBook.read === true ? checkbox.checked === true : checkbox.checked === false;
+    remove.textContent = 'Remove';
+
+    checkbox.addEventListener('click', () => {
+        checkbox.checked === true ? newBook.read === true : newBook.read === false;
+    });
+
+    remove.addEventListener('click', removeBook);
+};
+
+function removeBook(e) {
+    const parent = e.target.parentNode;
+    library.splice(parent, 1);
+    parent.remove();
 };
