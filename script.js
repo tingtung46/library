@@ -59,14 +59,10 @@ function appendNewBook(newBook) {
     const title = document.createElement('h3');
     const author = document.createElement('p');
     const pageNumber = document.createElement('p');
-    const read = document.createElement('label');
-    const checkbox = document.createElement('input');
-    const slider = document.createElement('span');
+    const read = document.createElement('button');
     const remove = document.createElement('button');
 
-    read.append(checkbox, slider);
-    read.setAttribute('id', 'read');
-    checkbox.setAttribute('type', 'checkbox')
+    read.setAttribute('id', 'read-status');
     remove.setAttribute('id', 'remove');
 
     book.appendChild(title);
@@ -78,14 +74,23 @@ function appendNewBook(newBook) {
     title.textContent = newBook.title;
     author.textContent = newBook.author;
     pageNumber.textContent = `${newBook.numberOfPages} pages`;
-    newBook.read === true ? checkbox.checked === true : checkbox.checked === false;
+    read.textContent = newBook.readingStatus === true ? 'Read' : 'Not read';
     remove.textContent = 'Remove';
 
-    checkbox.addEventListener('click', () => {
-        checkbox.checked === true ? newBook.read === true : newBook.read === false;
+    read.addEventListener('click', () => {
+        newBook.readingStatus === !newBook.readingStatus;
+        if (newBook.readingStatus === true) {
+            read.className = 'true';
+            read.textContent = 'Read';
+        } else {
+            read.className = 'false';
+            read.textContent = 'Not read';
+        }
     });
 
     remove.addEventListener('click', removeBook);
+
+    console.log(read);
 };
 
 function removeBook(e) {
@@ -93,3 +98,5 @@ function removeBook(e) {
     library.splice(parent, 1);
     parent.remove();
 };
+
+console.log(library);
