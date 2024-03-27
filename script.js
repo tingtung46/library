@@ -78,7 +78,7 @@ function appendNewBook(newBook) {
     remove.textContent = 'Remove';
 
     read.addEventListener('click', () => {
-        newBook.readingStatus === !newBook.readingStatus;
+        newBook.readingStatus = !newBook.readingStatus;
         if (newBook.readingStatus === true) {
             read.className = 'true';
             read.textContent = 'Read';
