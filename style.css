@@ -187,3 +187,26 @@ button#append-book:hover {
     background-color: var(--header-color);
     color: var(--hero-color);
 }
+
+.book {
+    border-radius: 10px;
+    width: clamp(200px, 50%, 18rem);
+    background-color: var(--card-color);
+    color: var(--font-color);
+    font-size: .9rem;
+    padding: 2rem .5rem;
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+}
+
+button#read-status,
+button#remove {
+    padding: .5rem 1rem;
+    color: var(--font-color);
+    font-weight: 600;
+    background-color: var(--card-color);
+    border: 2px solid var(--navbar-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
