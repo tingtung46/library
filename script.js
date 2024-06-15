@@ -17,7 +17,7 @@ closeBtn.addEventListener('click', () => {
     dialog.close();
 });
 
-appendBook.addEventListener('click', addBookToLibrary);
+// appendBook.addEventListener('click', addBookToLibrary);
 
 const titleInput = document.querySelector('#book-title');
 const authorInput = document.querySelector('#book-author');
@@ -33,7 +33,7 @@ function Book(title, author, pages, read) {
     this.readingStatus = read;
 };
 
-function addBookToLibrary(e) {
+function addBookToLibrary() {
     const newBook = new Book(
         titleInput.value, 
         authorInput.value, 
@@ -45,7 +45,7 @@ function addBookToLibrary(e) {
 
     appendNewBook(newBook);
 
-    e.preventDefault();
+    form.reset();
     dialog.close();
 };
 
@@ -100,3 +100,45 @@ function removeBook(e) {
 };
 
 console.log(library);
+
+const form = document.querySelector('form');
+const titleErr = document.querySelector('#book-title + .error');
+const authorErr = document.querySelector('#book-author + .error');
+
+const validateInp = () => {
+    if (titleInput.validity.valid || titleInput.value.length === 0) {
+        titleErr.textContent = '';
+        titleErr.className = '';
+        titleInput.className = 'valid';
+    } 
+    
+    if (authorInput.validity.valid || authorInput.value.length === 0) {
+        authorErr.textContent = '';
+        authorErr.className = '';
+        authorInput.className = 'valid';
+    }
+};
+
+titleInput.addEventListener('input', validateInp);
+
+authorInput.addEventListener('input', validateInp);
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if (titleInput.validity.valueMissing) {
+        titleErr.textContent = '*You need to enter a book title';
+        titleErr.className = 'error';
+        titleInput.className = 'invalid';
+        return;
+    }
+
+    if (authorInput.validity.valueMissing) {
+        authorErr.textContent = '*You need to enter a book author';
+        authorErr.className = 'error';
+        authorInput.className = 'invalid';
+        return;
+    }
+
+    addBookToLibrary();
+});

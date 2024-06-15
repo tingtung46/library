@@ -210,3 +210,23 @@ button#remove {
     border-radius: 5px;
     cursor: pointer;
 }
+
+/* Invalid form */
+.valid {
+    border: 2px solid var(--navbar-color);
+    background-color: rgb(255, 255, 255);
+}
+
+.invalid {
+    background-color: rgb(220, 20, 60);
+    border-color: #fdd;
+}
+
+input:invalid:focus {
+    outline: none;
+}
+
+.error {
+    font-size: .6rem;
+    color: #fdd;
+}
